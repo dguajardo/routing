@@ -5,43 +5,23 @@
 <table>
   <thead>
     <tr>
-      <th>Nid</th>
-      <th>Depot_at</th>
-      <th>Depot_id</th>
-      <th>Action</th>
-      <th>Id_ruta</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Arrives_at</th>
-      <th>Departs_at</th>
+      <th>NAME</th>
+      <th>URL</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @routes.each do |route| %>
-      <% @stops.each do |stop| %>
-        <tr>
-          <td><%= route.nid %></td>
-          <td><%= route.depot_at %></td>
-          <td><%= route.depot %></td>
-          <td><%= route.action %></td>
-          
-          <td><%= stops.id_ruta %></td>
-          <td><%= stops.latitude %></td>
-          <td><%= stops.longitude %></td>
-          <td><%= stops.arrives_at %></td>
-          <td><%= stops.departs_at %></td>
-        </tr>
-      <% end %>
+    <% @uploads.each do |upload| %>
+      <tr>
+        <td><%= upload.name %></td>
+        <td><%= upload.url %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
 <div>
-<h4>Import that data!</h4>
-<%= form_tag 'New Upload', new_upload_path, multipart:true do %>
-<%= file_field_tag :file %>
-<%= submit_tag "Import CSV"%>
-<% end %>
-</div>
+<h4>Import that Dta</h4>
+<%= link_to 'New Upload', new_upload_path %>
+</div>div>

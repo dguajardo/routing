@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  before_action :set_upload, only: [:show, :edit, :update, :destroy, :import]
 
   # GET /uploads
   # GET /uploads.json
@@ -19,10 +19,7 @@ class UploadsController < ApplicationController
     @upload = Upload.new
   end
 
-  def import 
-    Upload.import(params[:file])
-    redirect_to root_url, notice "Activity Data Imported"
-  end  
+  
 
   # GET /uploads/1/edit
   def edit
