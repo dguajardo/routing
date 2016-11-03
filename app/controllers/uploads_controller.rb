@@ -19,7 +19,10 @@ class UploadsController < ApplicationController
     @upload = Upload.new
   end
 
-  
+  def import
+  Upload.import(params[:file])
+  redirect_to uploads_url , notice: "CSV imported."
+  end  
 
   # GET /uploads/1/edit
   def edit
