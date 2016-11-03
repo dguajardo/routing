@@ -5,6 +5,8 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   def index
     @uploads = Upload.all
+    @routes = Route.all
+    @stops = Stop.all
   end
 
   # GET /uploads/1
@@ -16,6 +18,11 @@ class UploadsController < ApplicationController
   def new
     @upload = Upload.new
   end
+
+  def import 
+    Upload.import(params[:file])
+    redirect_to root_url, notice "Activity Data Imported"
+  end  
 
   # GET /uploads/1/edit
   def edit
