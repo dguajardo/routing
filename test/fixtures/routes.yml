@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nid: MyString
+  depot_at: 2016-11-03 12:28:52
+  depot: 1
+  action: MyString
+  import_id: 1
+
+two:
+  nid: MyString
+  depot_at: 2016-11-03 12:28:52
+  depot: 1
+  action: MyString
+  import_id: 1
