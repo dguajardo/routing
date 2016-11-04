@@ -4,14 +4,18 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
-    @routes = Route.all
-    @stops = Stop.all
+    @uploads = Upload.order(:name)
+   
+    respond_to do |format|
+      format.html 
+      format.csv { send_data @uploads.to_csv}
   end
 
   # GET /uploads/1
   # GET /uploads/1.json
   def show
+     @routes = Route.all
+    @stops = Stop.all
   end
 
   # GET /uploads/new
@@ -20,9 +24,11 @@ class UploadsController < ApplicationController
   end
 
   def import
-  Upload.import(params[:file])
-  redirect_to uploads_url , notice: "CSV imported."
-  end  
+   Upload.import(params[:file])
+   redirect_to root_url, notice: "Imported"
+  end 
+
+
 
   # GET /uploads/1/edit
   def edit
@@ -77,5 +83,5 @@ class UploadsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
       params.require(:upload).permit(:name, :url)
-    end
+    end  
 end

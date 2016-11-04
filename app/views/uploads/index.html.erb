@@ -1,28 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Uploads List</h1>
+<div class ="media">
+  <div class ="media-body">
+  <table class ="table table-hover">
+      <table>
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>URL</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>NAME</th>
-      <th>URL</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @uploads.each do |upload| %>
-      <tr>
-        <td><%= upload.name %></td>
-        <td><%= upload.url %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @uploads.each do |upload| %>
+            <tr>
+              <td><%= upload.name %></td>
+              <td><%= upload.url %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+</div>
 
 <div>
 <h4>Let's import the Data</h4>
+<%= form_tag uploads_path , multipart: true  do %>
+<%= file_field_tag  :file %>
+<%= submit_tag "Import"%>
+
+<%end%>
+
 <%= link_to 'New Upload', new_upload_path %>
 <%= link_to 'Stops list', stops_index_path %>
 </div>
